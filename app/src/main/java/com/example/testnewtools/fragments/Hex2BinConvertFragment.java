@@ -877,6 +877,10 @@ public class Hex2BinConvertFragment extends BaseFragment implements  EasyPermiss
     }
     private void verycutstatus(byte [] buf,int timeout)
     {
+        if(buf!=null)
+        {
+           Log.d("zl","send:"+ CodeFormat.byteToHex(buf,buf.length).toUpperCase());
+        }
         MainActivity parentActivity1 = MainActivity.getInstance();
         String strState1 = parentActivity1.GetStateConnect();
         if(!strState1.equalsIgnoreCase("无连接"))
@@ -932,7 +936,7 @@ public class Hex2BinConvertFragment extends BaseFragment implements  EasyPermiss
        @Override
        public void run() {
            try {
-               Thread.sleep(1000);
+               Thread.sleep(6000);
                if(mtype==Constants.FIRMWARE_DATAERROR_TIMEOUT)
                {
                    semaphore2.acquire();

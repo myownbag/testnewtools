@@ -78,13 +78,14 @@ public class Procseedlg extends Dialog {
     }
     public void showresult(String s,int res,boolean isshow)
     {
-        show();
+
         infotext.setText(s);
         imageView.setImageResource(res);
         if(isshow)
             mbtn_know.setVisibility(View.VISIBLE);
         else
             mbtn_know.setVisibility(View.GONE);
+        show();
     }
     public void  dismiss(String info,int res)
     {
