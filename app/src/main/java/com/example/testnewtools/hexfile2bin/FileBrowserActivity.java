@@ -3,6 +3,7 @@ package com.example.testnewtools.hexfile2bin;
 import android.Manifest;
 import android.app.ListActivity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
@@ -40,17 +41,17 @@ public class FileBrowserActivity extends ListActivity implements EasyPermissions
         setContentView(R.layout.activity_file_browser_acitivity);
         intent=getIntent();
         String[] perms = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CALL_PHONE};
+        initView();
         if (EasyPermissions.hasPermissions(this, perms)) {//检查是否获取该权限
             Log.i(TAG, "已获取权限");
+            initInfo();
         } else {
             //第二个参数是被拒绝后再次申请该权限的解释
             //第三个参数是请求码
             //第四个参数是要申请的权限
             EasyPermissions.requestPermissions(this,"必要的权限", 0, perms);
         }
-
-        initView();
-//        initInfo();
+          Log.d("zl", "Build.VERSION.RELEASE:" + Build.VERSION.RELEASE);
     }
 
 
@@ -77,10 +78,14 @@ public class FileBrowserActivity extends ListActivity implements EasyPermissions
 
     private void initView() {
         curPathTextView = (TextView) findViewById(R.id.curPath);
+
+        Log.d("zl","init curPathTextView="+curPathTextView);
     }
 
     private void getFileDir(String filePath) {
+
         curPathTextView.setText(filePath);
+        Log.d("zl","getFileDir: "+filePath);
         itemsList = new ArrayList<>();
         pathList = new ArrayList<>();
         File file = new File(filePath);
@@ -183,6 +188,7 @@ public class FileBrowserActivity extends ListActivity implements EasyPermissions
     @Override
     public void onPermissionsGranted(int requestCode, List<String> perms) {
         initInfo();
+        Log.d("zl","permition");
     }
 
     @Override

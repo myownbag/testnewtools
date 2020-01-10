@@ -181,6 +181,7 @@ public class Hex2BinConvertFragment extends BaseFragment implements  EasyPermiss
                 updatestep=-1;
             }
         });
+        mprodlg.setCanceledOnTouchOutside(false);
     }
 
     private void initListener() {
@@ -791,6 +792,8 @@ public class Hex2BinConvertFragment extends BaseFragment implements  EasyPermiss
         public void onClick(View v) {
 //            Toast.makeText(getActivity(),"开始转换",Toast.LENGTH_SHORT)
 //                    .show();
+//            mprodlg.show();
+
             if(byte_firmware==null)
             {
                 ToastUtils.showToast(getActivity(),"请先载入文件");
@@ -841,7 +844,11 @@ public class Hex2BinConvertFragment extends BaseFragment implements  EasyPermiss
                 countDownTimer.start();
                 mIsatart=true;
             }
+
+
         }
+
+
     }
 
     private void verycutstatus(String readOutMsg,int timeout) {

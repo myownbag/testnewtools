@@ -5,19 +5,29 @@ package com.example.testnewtools.myview;
  */
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.NonNull;
+import android.view.KeyEvent;
+
+import com.example.testnewtools.MainActivity;
+import com.example.testnewtools.utils.ToastUtils;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 import dmax.dialog.SpotsDialog;
 
+import static com.example.testnewtools.MainActivity.getInstance;
+import static com.example.testnewtools.utils.ToastUtils.*;
+
 /**
  * Created by 吴建峰 on 2017/8/28/028.
  */
 
 public class CustomDialog extends SpotsDialog {
+
 
     private long mTimeOut = 0;// 默认timeOut为0即无限大
     private OnTimeOutListener mTimeOutListener = null;// timeOut后的处理器

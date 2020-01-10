@@ -18,7 +18,7 @@ import java.util.concurrent.Semaphore;
 
 public class Hex2Bin {
 
-    private static final int ByteSize = 200 * 1024; //读取的字节数
+    private static final int ByteSize = 600 * 1024; //读取的字节数
     private static final String firstLinePrefix = ":02000008"; //地址循环行的标识
     private static final Integer firstAddressPrefix_10 = 2048; //0800，第一次循环的第一个地址位的16进制字符串，转换成十进制是2048
     private static final int dataMaxCharNum = 32; //每行数据最多32字符，16个字节（16进制2个字符占一个字节）
