@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 
 import com.example.testnewtools.MainActivity;
+import com.example.testnewtools.utils.Constants;
 
 
 public abstract class BaseFragment extends Fragment {
@@ -19,27 +20,33 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+    }
+
+    public void Oncurrentpageselect(int index)
+    {
         bundle = getArguments();
         if (bundle != null) {
             position=bundle.getInt("position");
             str=bundle.getString("extra");
-//            Log.d("zl","position:"+position);
-//            Log.d("zl","title:"+str);
         }
         else
         {
             Log.d("zl","position:"+"ERROR");
         }
-    }
-
-    public void Oncurrentpageselect(int index)
-    {
         if(position!=index)
         {
             mIsatart=false;
         }
-
-        MainActivity.getInstance().getcurblueservice().ChangetimeoutofPackage(50);
+        Log.d("zl","fragment:"+str);
+        if(str.equals(Constants.FunFregmemt1))
+        {
+            MainActivity.getInstance().getcurblueservice().ChangetimeoutofPackage(50);
+        }
+        else
+        {
+            MainActivity.getInstance().getcurblueservice().ChangetimeoutofPackage(200);
+        }
     }
     public void Ondlgcancled()
     {

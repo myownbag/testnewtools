@@ -18,16 +18,21 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.testnewtools.bluetooth.BluetoothService;
 import com.example.testnewtools.bluetooth.BluetoothState;
 import com.example.testnewtools.bluetooth.DeviceListActivity;
+import com.example.testnewtools.fragments.BaseFragment;
 import com.example.testnewtools.fragments.Hex2BinConvertFragment;
+import com.example.testnewtools.fragments.NBRegisiterfragment;
 import com.example.testnewtools.myview.CustomDialog;
 import com.example.testnewtools.utils.Constants;
 import com.example.testnewtools.utils.DigitalTrans;
 import com.example.testnewtools.utils.ToastUtils;
+
+import org.xutils.x;
 
 import static com.example.testnewtools.bluetooth.BluetoothState.REQUEST_CONNECT_DEVICE;
 import static com.example.testnewtools.bluetooth.BluetoothState.REQUEST_ENABLE_BT;
@@ -55,16 +60,22 @@ public class MainActivity extends AppCompatActivity {
     private BluetoothService mBTService = null;
     //接口
     Ondataparse mydataparse=null;
-    Hex2BinConvertFragment mchildfragment;
+    BaseFragment mchildfragment;
+
+    RadioGroup mFunSel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        x.Ext.init(getApplication());
+        // x.Ext.setDebug(BuildConfig.DEBUG); // 是否输出debug日志, 开启debug会影响性能.
+
         mActionBar = getSupportActionBar();
         mActionBar.setTitle(R.string.secure_connect);
-        InitView();
         InitBlueTooth();
+        InitView();
     }
 
     private void InitView() {
@@ -82,7 +93,11 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("zl","dialog has been cancelde");
             }
         });
+        mFunSel = findViewById(R.id.funbut);
+
+
         Initfragment();
+        mFunSel.setOnCheckedChangeListener(new RadioGroupListernerImpl());
     }
 
     private void Initfragment() {
@@ -91,7 +106,12 @@ public class MainActivity extends AppCompatActivity {
         mchildfragment=new Hex2BinConvertFragment();
         transaction.replace(R.id.mainframe,mchildfragment ,
                 METERFRAGMENT);
+        Bundle bundle = new Bundle();
+        bundle.putInt("position",1);
+        bundle.putString("extra",Constants.FunFregmemt1);
+        mchildfragment.setArguments(bundle);
         transaction.commit();// 提交事务
+//        mchildfragment.Oncurrentpageselect(1);
     }
 
     private void InitBlueTooth()
@@ -269,7 +289,7 @@ public class MainActivity extends AppCompatActivity {
 //                    {
 //                        fragment10.OnFileConvertResult(msg.arg1);
 //                    }
-                    mchildfragment.OnFileConvertResult(msg.arg1);
+                    ((Hex2BinConvertFragment)mchildfragment).OnFileConvertResult(msg.arg1);
                     break;
             }
         }
@@ -479,6 +499,42 @@ public class MainActivity extends AppCompatActivity {
                     mThreedTimeout.start();
                 }
             }
+        }
+    }
+
+    private  class RadioGroupListernerImpl implements RadioGroup.OnCheckedChangeListener{
+
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            FragmentManager fm=getSupportFragmentManager();
+            FragmentTransaction transaction = fm.beginTransaction(); //开启事务
+            Bundle bundle = new Bundle();
+            int position =0;
+            switch (checkedId)
+            {
+                case R.id.but_upgrate:
+                    position =1;
+                    bundle.putInt("position",position);
+                    bundle.putString("extra",Constants.FunFregmemt1);
+                    mchildfragment=new Hex2BinConvertFragment();
+                    transaction.replace(R.id.mainframe,mchildfragment ,
+                            METERFRAGMENT);
+
+                    break;
+                case R.id.but_registernb:
+                    position =2;
+                    bundle.putInt("position",position);
+                    bundle.putString("extra",Constants.FunFregmemt2);
+                    mchildfragment=new NBRegisiterfragment();
+                    transaction.replace(R.id.mainframe,mchildfragment ,
+                            METERFRAGMENT);
+                    break;
+                    default:
+                        break;
+            }
+            mchildfragment.setArguments(bundle);
+            transaction.commit();// 提交事务
+            mchildfragment.Oncurrentpageselect(position);
         }
     }
 }

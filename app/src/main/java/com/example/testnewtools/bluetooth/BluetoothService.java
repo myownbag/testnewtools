@@ -45,7 +45,7 @@ public class BluetoothService {
     private ConnectedThread mConnectedThread;
     private int mState;
 
-    private int mWaittimeout=200;
+    private int mWaittimeout=50;
 //    public Semaphore mSemaphore;
 //    public boolean mIsblock=false;
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">固件升级</string>
+    <string name="app_name">DMU助手</string>
 
     <!--  BluetoothChat -->
     <string name="send">Send</string>

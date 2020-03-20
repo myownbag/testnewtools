@@ -49,6 +49,8 @@ public class Constants {
     public static final String NB_SERVICE_KEY="service";
     public static final String NB_Service_END="/WeegNB/registerDevice?verifyCode=%s&serial=%s";
     public static final String NB_Service_END1="/WeegNB/setInfoDevice?deviceId=%s&type=%s&deviceType=DTU&model=WeegDTU";
+        //onenet service
+    public static final String NB_Service_TO_ONENET="/NBWeegServer/weeg/createDevice?OperatorInfo=111&imei=%s&serial=%s&deviceType=%s&clientId=010&phone=123&imsi=%s";
 
 
     //历史数据业务标记
@@ -80,4 +82,8 @@ public class Constants {
     public static final int PARSE_FLOAT1=0;
     public static final int PARSE_FLOAT2=1;
     public static final int PARSE_INT=2;
+
+    //主要功能页面名称
+    public static final String FunFregmemt1 = "固件升级";
+    public static final String FunFregmemt2 = "业务注册";
 }

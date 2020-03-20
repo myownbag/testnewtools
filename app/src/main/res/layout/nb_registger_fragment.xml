@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<RelativeLayout
+    android:id="@+id/nb_title_addr"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:layout_height="50dp">
+    <TextView
+        android:id="@+id/nb_addr_lable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:text="地址设定："/>
+    <TextView
+        android:id="@+id/nb_add_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/nb_addr_lable"
+        android:layout_toRightOf="@id/nb_addr_lable"
+        android:layout_centerVertical="true"/>
+    <RelativeLayout
+        android:id="@+id/rll_bt_scan"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true" >
+
+        <ImageView
+            android:id="@+id/nb_img_set_addr"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/icon_jiantou" />
+    </RelativeLayout>
+</RelativeLayout>
+   <LinearLayout
+       android:layout_below="@id/nb_title_addr"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       >
+       <View
+           android:layout_width="match_parent"
+           android:layout_height="0.5dp"
+           android:background="#CFCFCF" />
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="50dp"
+           android:gravity="center_vertical"
+           android:orientation="horizontal"
+           android:weightSum="10">
+
+           <TextView
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_weight="2"
+               android:text="IMEI:" />
+
+           <TextView
+               android:id="@+id/nb_imei_info"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_marginRight="50dp"
+               android:layout_weight="8" />
+       </LinearLayout>
+       <View
+           android:layout_width="match_parent"
+           android:layout_height="0.5dp"
+           android:background="#CFCFCF" />
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="50dp"
+           android:orientation="horizontal"
+           android:gravity="center_vertical"
+           android:weightSum="10">
+           <TextView
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_weight="2"
+               android:text="操作结果:"/>
+           <TextView
+               android:id="@+id/nb_result_info"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_weight="8"
+               android:layout_marginRight="10dp"
+               />
+
+       </LinearLayout>
+       <View
+           android:layout_width="match_parent"
+           android:layout_height="0.5dp"
+           android:background="#CFCFCF" />
+   </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/nb_buttoncanter1"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_weight="2"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/nb_but1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/round_button"
+            android:text="设备注册"
+            android:textColor="#fff"
+            android:textSize="16sp" />
+    </LinearLayout>
+</RelativeLayout>

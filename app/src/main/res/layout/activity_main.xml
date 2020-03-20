@@ -9,9 +9,43 @@
     <FrameLayout
         android:id="@+id/mainframe"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/butselect"
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
     </FrameLayout>
+
+    <LinearLayout
+      android:id="@+id/butselect"
+      android:layout_width="match_parent"
+      android:layout_height="60sp"
+      android:orientation="horizontal"
+      app:layout_constraintBottom_toBottomOf="parent"
+
+>
+
+      <RadioGroup
+          android:id="@+id/funbut"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="horizontal"
+          android:background="@android:color/darker_gray"
+          android:checkedButton="@id/but_upgrate"
+          android:weightSum="2">
+          <RadioButton
+              android:id="@+id/but_upgrate"
+              android:text="固件升级"
+              android:drawableLeft="@drawable/btn_tab_updatedra_selector"
+              style="@style/BottomTabStyle"
+              />
+          <RadioButton
+              android:id="@+id/but_registernb"
+              android:text="业务注册"
+              android:drawableLeft="@drawable/btn_tab_registerdra_selector"
+              style="@style/BottomTabStyle"
+              />
+      </RadioGroup>
+  </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
